@@ -21,7 +21,7 @@ public class move : MonoBehaviour {
         countText.text = "分數:";
 		winText.text = "";
 		curr = DateTime.Now;
-		time.text = "10";
+		time.text = "45";
 	}
 
     // Update is called once per frame
@@ -30,12 +30,12 @@ public class move : MonoBehaviour {
         var x = Input.GetAxis("Horizontal");
         var z = Input.GetAxis("Vertical");
         //transform.Translate(x, 0 ,z);
-        rb.AddForce(new Vector3(x, 0, z));
+        rb.AddForce(new Vector3(x, 0, z)*speed);
         TimeSpan ts = DateTime.Now - curr;
         if (winText.text != "You Win!") { 
-        if (ts.Seconds < 10)
+        if (ts.Seconds < 45)
         {
-            time.text = (9 - ts.Seconds).ToString() + ":" + (1000 - ts.Milliseconds).ToString();
+            time.text = (44 - ts.Seconds).ToString() + ":" + (1000 - ts.Milliseconds).ToString();
 
         }
         else
@@ -51,7 +51,7 @@ public class move : MonoBehaviour {
         count++;
         countText.text = "分數:"+count.ToString();
 
-		if (count == 3 && winText.text !="You lose!") {
+		if (count == 7 && winText.text !="You lose!") {
 			winText.text="You Win!";
             
 		}
